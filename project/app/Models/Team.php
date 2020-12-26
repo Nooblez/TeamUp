@@ -17,7 +17,6 @@ class Team extends JetstreamTeam
     protected $casts = [
         'personal_team' => 'boolean',
     ];
-
     /**
      * The attributes that are mass assignable.
      *
@@ -38,4 +37,15 @@ class Team extends JetstreamTeam
         'updated' => TeamUpdated::class,
         'deleted' => TeamDeleted::class,
     ];
+
+    /**
+     * Get the date the team was created.
+     *
+     * @return 
+     */
+    public function isPersonalTeamAttribute()
+    {
+        return $this->personal_team;
+    }
+
 }

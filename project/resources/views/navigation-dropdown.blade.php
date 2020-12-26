@@ -56,38 +56,46 @@
                         @endif
 
                         <div class="border-t border-gray-100"></div>
-
-                        <!-- Team Management -->
-                        @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                            <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Manage Team') }}
-                            </div>
-
-                            <!-- Team Settings -->
-                            <x-jet-dropdown-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
-                                {{ __('Team Settings') }}
-                            </x-jet-dropdown-link>
-
+                        @if(Auth::user()->currentTeam == Auth::user()->personalTeam() && Auth::user()->allTeams()->count() == 1)
                             @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
                                 <x-jet-dropdown-link href="{{ route('teams.create') }}">
                                     {{ __('Create New Team') }}
                                 </x-jet-dropdown-link>
                             @endcan
+                        @else                        
+                            <!-- Team Management -->
+                            @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
+                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                    {{ __('Manage Team') }}
+                                </div>
 
-                            <div class="border-t border-gray-100"></div>
+                                <!-- Team Settings -->
+                                <x-jet-dropdown-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
+                                    {{ __('Team Settings') }}
+                                </x-jet-dropdown-link>
 
-                            <!-- Team Switcher -->
-                            <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Switch Teams') }}
-                            </div>
+                                @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
+                                    <x-jet-dropdown-link href="{{ route('teams.create') }}">
+                                        {{ __('Create New Team') }}
+                                    </x-jet-dropdown-link>
+                                @endcan
 
-                            @foreach (Auth::user()->allTeams() as $team)
-                                <x-jet-switchable-team :team="$team" />
-                            @endforeach
+                                <div class="border-t border-gray-100"></div>
 
-                            <div class="border-t border-gray-100"></div>
-                        @endif
-
+                                <!-- Team Switcher -->
+                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                    {{ __('Switch Teams') }}
+                                </div>
+                                @foreach (Auth::user()->allTeams() as $team)
+                                    @if(Auth::user()->currentTeam() == Auth::user()->personalTeam())
+                                    GNEEEEEEEEEEE
+                                    @else
+                                       <x-jet-switchable-team :team="$team" />
+                                    @endif
+                                @endforeach
+                            @endif
+                        @endif    
+                                <div class="border-t border-gray-100"></div>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
