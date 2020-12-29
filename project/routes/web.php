@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LabelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');})->name('dashboard');
 
 Route::get('/', [UserController::class, 'home'])->name('home');
+Route::get('/labels/create', [LabelController::class, 'create'])->name('create-label');

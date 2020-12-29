@@ -94,6 +94,17 @@
                                 @endforeach
                             @endif
                         @endif    
+
+                        <!-- Labels -->
+
+                        <div class="block px-4 py-2 text-xs text-gray-400">Labels</div>
+                        <x-jet-dropdown-link href="{{ route('create-label') }}">
+                            Create Label
+                        </x-jet-dropdown-link> 
+                        <x-jet-dropdown-link href="{{ route('home') }}">
+                            Get a Label
+                        </x-jet-dropdown-link>                         
+
                                 <div class="border-t border-gray-100"></div>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
