@@ -8,19 +8,22 @@ use App\Models\Label;
 class LabelController extends Controller
 {
 	public function create(){
-		return view('labels.create-label');
-	}
+	   return view('labels.create-label');
+    }
 
-    // public function createLabel(){
-    // 	$name = 'nome Label';
-    // 	$description = 'descrizione Label';7
+    public function newLabel(Request $request){
+        //inizializzo variabili
+        $newLabel = new Label();
 
-    // 	$newLabel = new Label();
-    	
-    // 	$newLabel->name = $name;
-    // 	$newLabel->description = $description;
+        //creo campi da inserire nel db            
+        $newLabel->name = $request->input('name');
+        $newLabel->description = $request->input('description');
 
-    // 	$newLabel->save();
+        // $newLabel->save();
+        return redirect(route('labels.success'));
+    }
 
-    // }
+    public function success(){
+        return view('labels.success');
+    }
 }

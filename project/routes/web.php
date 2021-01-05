@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -15,12 +15,11 @@ use App\Http\Controllers\LabelController;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
-*/
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');})->name('dashboard');
 
 Route::get('/', [UserController::class, 'home'])->name('home');
-Route::get('/labels/create', [LabelController::class, 'create'])->name('create-label');
+
+Route::get('/labels/create', [LabelController::class, 'create'])->name('labels.create.page');
+Route::post('/labels/create/new', [LabelController::class, 'newLabel'])->name('labels.create');
+Route::get('/labels/create/success', [LabelController::class, 'success'])->name('labels.success');

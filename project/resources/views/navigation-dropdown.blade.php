@@ -98,7 +98,7 @@
                         <!-- Labels -->
 
                         <div class="block px-4 py-2 text-xs text-gray-400">Labels</div>
-                        <x-jet-dropdown-link href="{{ route('create-label') }}">
+                        <x-jet-dropdown-link href="{{ route('labels.create.page') }}">
                             Create Label
                         </x-jet-dropdown-link> 
                         <x-jet-dropdown-link href="{{ route('home') }}">
