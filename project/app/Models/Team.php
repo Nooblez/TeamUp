@@ -48,4 +48,14 @@ class Team extends JetstreamTeam
         return $this->personal_team;
     }
 
+    /**
+    * Logica many-to-many: 
+    * ogni utente può avere una quantità di Label indefinita
+    *
+    */
+    public function labels()
+    {
+        return $this->belongsToMany(Label::class);
+    }
+
 }

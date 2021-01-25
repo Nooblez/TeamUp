@@ -18,4 +18,24 @@ class Label extends Model
     	'name', 'description'
     ];
 
+    /**
+    * Logica many-to-many: 
+	* Gli utenti che hanno la label
+	*
+    */
+
+	public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
+	
+	/**
+    * Logica many-to-many: 
+	* Gli utenti che hanno la label
+	*
+    */
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class);
+    }
 }

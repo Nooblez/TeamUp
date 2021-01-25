@@ -58,4 +58,14 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+    * Logica many-to-many: 
+    * ogni utente può avere una quantità di Label indefinita
+    *
+    */
+    public function labels()
+    {
+        return $this->belongsToMany(Label::class);
+    }
 }
