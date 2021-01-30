@@ -1,4 +1,4 @@
-<x-guest-layout>
+    <x-guest-layout>
     <form method="POST" action="{{ route('labels.create') }}" name="form">
         @csrf
         <div class="col-span-6">

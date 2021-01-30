@@ -55,7 +55,7 @@
                             </x-jet-dropdown-link>
                         @endif
 
-                        <div class="border-t border-gray-100"></div>
+                        <div class="border-t border-gray-100" /></div>
                             <!-- Team Management -->
                         @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                             <div class="block px-4 py-2 text-xs text-gray-400">
@@ -101,7 +101,7 @@
                         <x-jet-dropdown-link href="{{ route('labels.create.page') }}">
                             Create Label
                         </x-jet-dropdown-link> 
-                        <x-jet-dropdown-link href="{{ route('home') }}">
+                        <x-jet-dropdown-link href="{{ route('labels.get') }}">
                             Get a Label
                         </x-jet-dropdown-link>                         
 

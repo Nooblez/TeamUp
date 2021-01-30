@@ -14,10 +14,8 @@ class CreateLabelsUsersTable extends Migration
     public function up()
     {
         Schema::create('labels_users', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('label_id');
             $table->foreignId('user_id')->nullable();
-            $table->timestamps();
         });
     }
 

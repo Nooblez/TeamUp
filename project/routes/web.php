@@ -21,5 +21,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/', [UserController::class, 'home'])->name('home');
 
 Route::get('/labels/create', [LabelController::class, 'create'])->name('labels.create.page');
+Route::get('/labels/get', [LabelController::class, 'getNew'])->name('labels.get');
 Route::post('/labels/create/new', [LabelController::class, 'newLabel'])->name('labels.create');
+Route::post('/labels/delete/{label}/{user}', [LabelController::class, 'deleteLabel'])->name('labels.delete');
 Route::get('/labels/create/success', [LabelController::class, 'success'])->name('labels.success');

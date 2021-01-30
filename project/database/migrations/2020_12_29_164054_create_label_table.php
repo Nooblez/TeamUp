@@ -13,12 +13,16 @@ class CreateLabelTable extends Migration
      */
     public function up()
     {
-        Schema::create('label', function (Blueprint $table) {
+        Schema::create('labels', function (Blueprint $table) {
             $table->id();
             $table->text('label_name');
             $table->longText('label_description')->nullable();
             $table->timestamps();
         });
+
+        Artisan::call('db:seed', [
+            '--class' => LabelTableSeeder::class,
+        ]);
     }
 
     /**

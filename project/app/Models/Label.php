@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Label extends Model
 {
@@ -38,4 +39,16 @@ class Label extends Model
     {
         return $this->belongsToMany(Team::class);
     }
+
+    
+
+    /*
+    * Funzione per controllare se la label è competenza del team
+    *
+    */
+    public function isField(Team $team)
+    {
+
+    }
+
 }

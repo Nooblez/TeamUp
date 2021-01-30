@@ -14,10 +14,8 @@ class CreateLabelsTeamsTable extends Migration
     public function up()
     {
         Schema::create('labels_teams', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('label_id');
             $table->foreignId('team_id')->nullable();
-            $table->timestamps();
         });
     }
 

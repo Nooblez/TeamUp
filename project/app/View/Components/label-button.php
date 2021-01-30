@@ -6,6 +6,7 @@ use Illuminate\View\Component;
 
 class label-button extends Component
 {
+    public $title;
     /**
      * Create a new component instance.
      *

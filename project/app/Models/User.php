@@ -10,6 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
+use DB;
 
 class User extends Authenticatable
 {
@@ -67,5 +68,43 @@ class User extends Authenticatable
     public function labels()
     {
         return $this->belongsToMany(Label::class);
+    }
+
+    /*
+    * Funzione per controllare se l'utente ha labels
+    *
+    */
+
+    public function hasLabels()
+    {   
+        $response = false;
+        //estraggo la colonna con gli utenti
+        $usersWithLabel = DB::table('labels_users')->pluck('user_id');
+
+        if($usersWithLabel->contains($this->get('id')))
+        {
+            $response = true;
+        }
+        return $response;
+    }
+
+    /*
+    * Funzione per ottenere tutte le label dell'utente
+    *
+    */
+
+    public function whatLabels()
+    {   
+        $userLabels = DB::table('labels_users')->where('user_id', '=', $this->id)->pluck('user_id', 'label_id');
+        foreach ($userLabels as $userLabel) {
+            $allLabels = Label::all();
+            foreach ($allLabels as $label) {
+                if($userLabel->id == $label->id)
+                {
+                    array_push($response, $label);
+                }
+            }
+        }
+        return $response;
     }
 }
